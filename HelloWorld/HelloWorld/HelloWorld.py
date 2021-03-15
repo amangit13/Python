@@ -1,8 +1,7 @@
-import pygame
-import random
+import pygame, random, os
+
 win = None
 font = None
-
 
 class Sprite:
     def __init__(self):
@@ -23,9 +22,10 @@ class Sprite:
 
 
 def mainInit():
-    global font, win
+    global font, win, sonic
     pygame.init()
     font = pygame.font.get_default_font()
+    
     print(font)
     win = pygame.display.set_mode((1024,768))
 
