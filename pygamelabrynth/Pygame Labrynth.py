@@ -1,14 +1,14 @@
 import pygame
 import random
 
-
+DIM = 54
 class Cell:
     def __init__(self, val, r, c):
         
         self.val = 11 if (r,c) in ((0,0),(6,0),(0,6),(6,6)) else val
         self.trs = 0
-        self.r = r*52+52
-        self.c = c*52+52
+        self.r = r*DIM+DIM
+        self.c = c*DIM+DIM
         self.off = 0
         self.step = .3
         
