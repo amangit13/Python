@@ -11,7 +11,6 @@ def done_something(var):
 
 if __name__ == "__main__":
     dly = time.perf_counter()
-    print (dly)
     with concurrent.futures.ProcessPoolExecutor() as exec:
         f1 = [exec.submit(do_something, i) for i in range(3)]
 
