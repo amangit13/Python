@@ -1,9 +1,7 @@
 import serial
 print ("hello")
-ser = serial.Serial("COM3",9600)
+ser = serial.Serial("COM5",9600)
 
 while True:
     content = ser.read()
-    print (content)
-    print ("\n")
-    
+    print (chr(content[0]), end='')
