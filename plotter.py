@@ -2,10 +2,10 @@ import serial
 import time
 import pygame
 
-ser = serial.Serial("com5",57_600, timeout=0)
-ser.set_buffer_size(rx_size = 512_000,tx_size = 256)
+ser = serial.Serial("com4",9600, timeout=0)
+#ser.set_buffer_size(rx_size = 4_028,tx_size = 256)
 pygame.init()
-SCREEN = pygame.display.set_mode((800,768))
+SCREEN = pygame.display.set_mode((800,500))
 FONT = pygame.font.SysFont("",34)
 SMALLFNT = pygame.font.SysFont("", 22)
 LAYER = 0
@@ -14,26 +14,31 @@ CONTENT = ""
 
 class Plotter:
     def __init__(self):
-        self.x = 100
+        self.x = 1
         self.y=0
+        self.scalex = 1
+
 
     def draw(self):
         global SCREEN
         global CONTENT
         waiting = ser.in_waiting
+        print (waiting)
+
         if waiting > 0:
             CONTENT = ser.read(waiting)
-            #print(CONTENT)
 
             pxarray = pygame.PixelArray(SCREEN)
+
             for cont in CONTENT:
-                self.x+=1
+                self.scalex += 1
+                self.x += 1
                 
                 if self.x > 799:
                     self.x=0
                     SCREEN.fill((0,0,0))
 
-                self.y = cont + 300
+                self.y = cont+10
                 pxarray[self.x,self.y] = (255,0,0)
             pxarray.close()
 
@@ -63,9 +68,10 @@ if __name__ == "__main__":
         comps.draw()
 
         pygame.display.update()
-        #fps.tick(30)
+        fps.tick(10)
         
     pygame.quit()
+    ser.close()
 
 
 

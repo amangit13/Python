@@ -4,14 +4,14 @@ import os
 
 def do_something():    
     print("thread ", __name__)
-    for _ in range(80_000_000):
+    for _ in range(100_000_000):
         pass
 
 if __name__ == '__main__':
     print("from main ", __name__)
     print ("cpu count = ", os.cpu_count())
 
-    PROC = 5
+    PROC = 3
     print("calling do_something ", PROC, " times")
     dly = time.time()
     for _ in range(PROC):
