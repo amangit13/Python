@@ -2,7 +2,7 @@ import serial
 import time
 import pygame
 
-ser = serial.Serial("com4",9600, timeout=0)
+ser = serial.Serial("com5",9600, timeout=0)
 #ser.set_buffer_size(rx_size = 4_028,tx_size = 256)
 pygame.init()
 SCREEN = pygame.display.set_mode((800,500))
