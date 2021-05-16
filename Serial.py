@@ -3,7 +3,13 @@ import time
 
 print ("hello")
 
-ports = ['com3', 'com4', 'com5']
+LINE_FEED = 10
+
+TEXT=1
+NUM=0
+format = TEXT
+
+ports = ['com3', 'com4', 'com5', 'com6', 'com7']
 
 while 1:
     for port in ports:
@@ -18,16 +24,22 @@ while 1:
 
 print("success")
 i=0
+
 while True:
     content = ser.read()
-    if (content[0] == 32):
-        i+=1
-    else:
-        if i>4:
-            i=0
-            print ("")
 
+    if format == TEXT:
+        if content[0] == LINE_FEED:
+            print ("")
+        else:
+            print (chr(content[0]), end="")
+    else:
         print (hex(content[0]), end='')
         print (" ",end="")
 
+        i+=1
+        if i>10:
+            i=0
+            print ("")
+ 
   
