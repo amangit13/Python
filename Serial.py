@@ -7,7 +7,8 @@ LINE_FEED = 10
 
 TEXT=1
 NUM=0
-format = TEXT
+format = NUM
+COLUMN=10
 
 ports = ['com3', 'com4', 'com5', 'com6', 'com7']
 
@@ -38,7 +39,7 @@ while True:
         print (" ",end="")
 
         i+=1
-        if i>10:
+        if i>COLUMN:
             i=0
             print ("")
  
